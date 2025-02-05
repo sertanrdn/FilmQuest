@@ -1,15 +1,21 @@
-import { renderFilms } from "./renderFilm";
+import { renderFilms } from "./renderFilm.js";
+import { searchFilms } from "../api.js";
 
-export function filterFilms(event) {
+export async function filterFilms(event, allFilms) {
     const query = event.target.value; // Get the input field value
     console.log('Query:',query);
     console.log('all films: ', allFilms);
-    // Filtering the films based on the input value and showing the result by renderFilms func.
-    const filteredFilms = allFilms.filter(film => {
-        return film.title.toLowerCase().includes(query.toLowerCase());
-    });
 
-    console.log("Filtered films:", filteredFilms);
-    
-    renderFilms({ results: filteredFilms });
+    if(query === '') {
+        // If the search bar is empty show popular films
+        renderFilms({ results: allFilms });
+        return;
+    }
+    // Otherwise we will get the searchFilms API call based on the input
+    try {
+        const searchResults = await searchFilms(query);
+        renderFilms(searchResults);
+    } catch(error) {
+        console.error('Error searching films:', error);
+    }
 }

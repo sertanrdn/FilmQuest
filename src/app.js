@@ -1,6 +1,9 @@
-import { fetchFilms } from "./api.js";
+import { searchFilms, fetchPopularFilms } from "./api.js";
 import { renderFilms } from "./views/renderFilm.js";
 import { showError } from "./views/errorHandling.js";
+import { createSearchBar } from "./views/renderFilm.js";
+
+export let allFilms = [];
 
 async function loadApp() {
     const appDiv = document.getElementById('app');
@@ -11,20 +14,24 @@ async function loadApp() {
     appDiv.appendChild(spinner);
 
     try {
-        const films = await fetchFilms();
+        const films = await fetchPopularFilms();
 
         if (films && films.results) {
+            allFilms = films.results;
+            // Calling the search bar function to be added on the page
+            createSearchBar(allFilms);
             renderFilms(films);
         } else {
             console.error('No film found!');
-        }
-        
+        }    
     } catch(error) {
         console.error('Error loading films', error);
         showError('Failed to load films. Please try again later.');
     } finally {
         // Remove the spinner once the data is loaded or an error occurs
-        appDiv.removeChild(spinner);
+        if (spinner && spinner.parentNode) {
+            spinner.parentNode.removeChild(spinner);
+        }
     }
 }
 

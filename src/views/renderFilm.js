@@ -1,6 +1,31 @@
+import { filterFilms } from "./filter.js";
+
+export function createSearchBar(allFilms) {
+    const appDiv = document.getElementById('app');
+
+    const searchDiv = document.createElement('div');
+    searchDiv.classList.add('search-div');
+
+    const searchBar = document.createElement('input');
+    searchBar.classList.add('search-bar');
+    searchBar.type = 'text';
+    searchBar.placeholder = 'Search for a film...';
+
+    searchDiv.appendChild(searchBar);
+    appDiv.appendChild(searchDiv);
+
+    searchBar.addEventListener('keyup', (event) => filterFilms(event, allFilms));
+}
+
 export function renderFilms(films) {
+    console.log("Rendering films:", films.results);
     const appDiv = document.getElementById('app');    
-    appDiv.innerHTML = '';
+    
+    // Remove only the previous film list, NOT the entire appDiv
+    let existingFilmList = document.querySelector('.film-list');
+    if (existingFilmList) {
+        existingFilmList.remove();
+    }
 
     const filmList = document.createElement('div');
     filmList.classList.add('film-list');
