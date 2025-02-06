@@ -1,4 +1,4 @@
-import { fetchFilms } from "./api.js";
+import { fetchPopularFilms } from "./api.js";
 import { renderFilms } from "./views/renderFilm.js";
 import { showError } from "./views/errorHandling.js";
 
@@ -11,7 +11,7 @@ async function loadApp() {
     appDiv.appendChild(spinner);
 
     try {
-        const films = await fetchFilms();
+        const films = await fetchPopularFilms();
 
         if (films && films.results) {
             renderFilms(films);
