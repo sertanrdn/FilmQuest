@@ -2,7 +2,7 @@ import { renderFilms } from "./renderFilm.js";
 import { searchFilms } from "../api.js";
 
 export async function filterFilms(event, allFilms) {
-    const query = event.target.value; // Get the input field value
+    const query = event.target.value.trim(); // Get the input field value
     console.log('Query:',query);
     console.log('all films: ', allFilms);
 
