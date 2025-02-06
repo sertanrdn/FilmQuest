@@ -10,7 +10,7 @@ export function loadIndicator() {
 
 export function removeIndicator() {
     let indicator = document.querySelector('.indicator');
-    // Remove the indicator once the data is loaded or an error occurs
+    // Remove the indicator once the data is loaded
     if (indicator) {
         indicator.remove();
     }
