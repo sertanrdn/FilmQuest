@@ -1,6 +1,13 @@
+
 export function renderFilms(films) {
+    console.log("Rendering films:", films.results);
     const appDiv = document.getElementById('app');    
-    appDiv.innerHTML = '';
+    
+    // Remove only the previous film list, NOT the entire appDiv
+    let existingFilmList = document.querySelector('.film-list');
+    if (existingFilmList) {
+        existingFilmList.remove();
+    }
 
     const filmList = document.createElement('div');
     filmList.classList.add('film-list');

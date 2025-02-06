@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { fetchPopularFilms } from "./api.js";
 import { renderFilms } from "./views/renderFilm.js";
 import { showError } from "./views/errorHandling.js";
@@ -26,6 +27,12 @@ async function loadApp() {
         // Remove the spinner once the data is loaded or an error occurs
         appDiv.removeChild(spinner);
     }
+=======
+import { initHomePage } from "./pages/home.js";
+
+async function loadApp() {
+    await initHomePage();
+>>>>>>> main
 }
 
-loadApp();
+window.addEventListener('load', loadApp);
