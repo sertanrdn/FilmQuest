@@ -19,7 +19,13 @@ export function createSearchBar(allFilms) {
     searchDiv.appendChild(searchBar);
     appDiv.appendChild(searchDiv);
 
-    searchBar.addEventListener('keyup', (event) => filterFilms(event, allFilms));
+    let delayInterval;
+    searchBar.addEventListener('keyup', (event) => {
+        clearTimeout(delayInterval); // Clears the prev timer
+        delayInterval = setTimeout(() => {
+            filterFilms(event, allFilms); // Calling filter after a delay to reduce API calls
+        }, 500);
+    });
 }
 
 export async function initHomePage() {
