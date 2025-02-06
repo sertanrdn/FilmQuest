@@ -4,8 +4,9 @@ import { searchFilms, fetchPopularFilms } from "../api.js";
 import { renderFilms } from "../views/renderFilm.js";
 
 export let allFilms = [];
+export let popularFilms = [];
 
-export function createSearchBar(allFilms) {
+export function createSearchBar() {
     const appDiv = document.getElementById('app');
 
     const searchDiv = document.createElement('div');
@@ -23,7 +24,7 @@ export function createSearchBar(allFilms) {
     searchBar.addEventListener('keyup', (event) => {
         clearTimeout(delayInterval); // Clears the prev timer
         delayInterval = setTimeout(() => {
-            filterFilms(event, allFilms); // Calling filter after a delay to reduce API calls
+            filterFilms(event); // Calling filter after a delay to reduce API calls
         }, 500);
     });
 }
@@ -41,8 +42,9 @@ export async function initHomePage() {
 
         if (films && films.results) {
             allFilms = films.results;
+            popularFilms = [...films.results];
             // Calling the search bar function to be added on the page
-            createSearchBar(allFilms);
+            createSearchBar();
             renderFilms(films);
         } else {
             console.error('No film found!');
