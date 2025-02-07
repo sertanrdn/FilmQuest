@@ -2,6 +2,7 @@ import { filterFilms } from "../views/filter.js";
 import { showError } from "../views/errorHandling.js";
 import { searchFilms, fetchPopularFilms } from "../api.js";
 import { renderFilms } from "../views/renderFilm.js";
+import { loadIndicator, removeIndicator } from "../views/indicator.js";
 
 export let allFilms = [];
 export let popularFilms = [];
@@ -30,13 +31,7 @@ export function createSearchBar() {
 }
 
 export async function initHomePage() {
-    const appDiv = document.getElementById('app');
-
-    // Show a loading state while fetching data
-    const spinner = document.createElement('div');
-    spinner.classList.add('spinner');
-    appDiv.appendChild(spinner);
-
+    loadIndicator();
     try {
         const films = await fetchPopularFilms();
 
@@ -53,9 +48,6 @@ export async function initHomePage() {
         console.error('Error loading films', error);
         showError('Failed to load films. Please try again later.');
     } finally {
-        // Remove the spinner once the data is loaded or an error occurs
-        if (spinner && spinner.parentNode) {
-            spinner.parentNode.removeChild(spinner);
-        }
+        removeIndicator();
     }
 }
