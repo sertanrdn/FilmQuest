@@ -20,6 +20,10 @@ export function renderFilms(films) {
         filmTitle.classList.add('film-title');
         filmTitle.innerText = film.title;
 
+        const releaseYear = document.createElement('span');
+        releaseYear.classList.add('release-year');
+        releaseYear.innerText = `(${film.release_date.slice(0, 4)})`;
+
         const filmPoster = document.createElement('img');
         filmPoster.classList.add('film-poster');
         filmPoster.src = film.poster_path ? `https://image.tmdb.org/t/p/w500${film.poster_path}` : '';
@@ -32,6 +36,7 @@ export function renderFilms(films) {
         filmRating.classList.add('film-rating');
         filmRating.innerText = `⭐ ${film.vote_average.toFixed(1)}/10`;
 
+        filmTitle.appendChild(releaseYear);
         filmItem.appendChild(filmTitle);
         filmItem.appendChild(filmPoster);
         filmItem.appendChild(filmRating);
