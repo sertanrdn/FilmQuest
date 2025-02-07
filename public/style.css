@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --background-main: #2C3440;
+    --film-card-background: #1F2A40;
+    --text-color-main: #E6E6E6;
+    --navbar-color: #41658A;
+    --side-color: #418060;
+}
+
+body {
+    font-family: 'Work Sans', sans-serif;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-color: var(--background-main);
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#app {
+    margin: 1rem;
+    padding: 1.25rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.search-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.search-bar {
+    height: 30px;
+    width: 200px;
+    max-width: 400px;
+    padding: 0.5rem;
+    border: 2px solid var(--side-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: var(--text-color-main);
+    outline: none;
+}
+
+.film-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    width: 100%;
+    padding: 1.5rem;
+}
+
+.film-item {
+    background-color: var(--film-card-background);
+    padding: 1rem;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.film-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.film-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--text-color-main);
+    margin-bottom: 0.75rem;
+}
+
+.film-poster {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.error-message {
+    color: var(--text-color-main);
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 1rem;
+    padding: 0.75rem;
+}
