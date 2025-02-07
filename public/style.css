@@ -82,6 +82,13 @@ body {
     border-radius: 5px;
 }
 
+.film-rating {
+    font-size: 1rem;
+    color: var(--text-color-main);
+    font-weight: bold;
+    margin-top: 0.25rem;
+}
+
 .error-message {
     color: var(--text-color-main);
     font-size: 1.5rem;
