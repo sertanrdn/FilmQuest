@@ -28,8 +28,13 @@ export function renderFilms(films) {
         }
         filmPoster.alt = film.title;
 
+        const filmRating = document.createElement('p');
+        filmRating.classList.add('film-rating');
+        filmRating.innerText = `⭐ ${film.vote_average.toFixed(1)}/10`;
+
         filmItem.appendChild(filmTitle);
         filmItem.appendChild(filmPoster);
+        filmItem.appendChild(filmRating);
         filmList.appendChild(filmItem);
     });
     appDiv.appendChild(filmList);
