@@ -61,6 +61,9 @@ body {
     padding: 1rem;
     text-align: center;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .film-item:hover {
@@ -73,6 +76,7 @@ body {
     font-weight: bold;
     color: var(--text-color-main);
     margin-bottom: 0.75rem;
+    margin-top: 0.25rem;
 }
 
 .release-year {
@@ -85,7 +89,7 @@ body {
 
 .film-poster {
     width: 100%;
-    max-height: 250px;
+    height: auto;
     object-fit: cover;
     border-radius: 5px;
 }
@@ -103,4 +107,52 @@ body {
     text-align: center;
     margin-top: 1rem;
     padding: 0.75rem;
+}
+
+@media (max-width: 1024px) {
+    .film-item {
+        padding: 0.75rem;
+    }
+
+    .film-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .film-poster {
+        margin: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .film-item {
+        padding: 0.5rem;
+    }
+
+    .film-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .film-poster {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        margin: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .film-item {
+        padding: 0.25rem;
+    }
+
+    .film-list {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .film-poster {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        margin: 0.5rem;
+    }
 }
