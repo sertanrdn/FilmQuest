@@ -3,9 +3,44 @@ import { showError } from "../views/errorHandling.js";
 import { searchFilms, fetchPopularFilms } from "../api.js";
 import { renderFilms } from "../views/renderFilm.js";
 import { loadIndicator, removeIndicator } from "../views/indicator.js";
+import { showFavoritesPage } from "./favorites.js";
 
 export let allFilms = [];
 export let popularFilms = [];
+
+export function createNavbar() {
+    const navbar = document.createElement('nav');
+    navbar.classList.add('navbar');
+
+    const navList = document.createElement('ul');
+    navList.classList.add('nav-list');
+
+    const homeListItem = document.createElement('li');
+    const homeLink = document.createElement('a');
+    homeLink.classList.add('home-link');
+    homeLink.textContent = 'Home';
+    homeLink.href = '#Home';
+    homeLink.addEventListener('click', () => {
+        initHomePage();
+    });
+
+    const favoritesListItem = document.createElement('li');
+    const favoritesLink = document.createElement('a');
+    favoritesLink.classList.add('favorites-link');
+    favoritesLink.textContent = 'Favorites';
+    favoritesLink.href = '#Favorites';
+    favoritesLink.addEventListener('click', () => {
+        showFavoritesPage();
+    });
+
+    homeListItem.appendChild(homeLink);
+    favoritesListItem.appendChild(favoritesLink);
+
+    navList.appendChild(homeListItem);
+    navList.appendChild(favoritesListItem);
+    navbar.appendChild(navList);
+    document.body.insertBefore(navbar, document.body.firstChild);
+}
 
 export function createSearchBar() {
     const appDiv = document.getElementById('app');
@@ -32,13 +67,19 @@ export function createSearchBar() {
 
 export async function initHomePage() {
     loadIndicator();
+
+    if (!document.querySelector('.navbar')) createNavbar();
+    if (!document.querySelector('.search-bar')) createSearchBar();
+
+    const appDiv = document.getElementById('app');
+    appDiv.innerHTML = '';
+
     try {
         const films = await fetchPopularFilms();
 
         if (films && films.results) {
             allFilms = films.results;
             popularFilms = [...films.results];
-            // Calling the search bar function to be added on the page
             createSearchBar();
             renderFilms(films);
         } else {
