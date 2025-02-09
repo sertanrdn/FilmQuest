@@ -22,11 +22,45 @@ body {
     min-height: 100vh;
 }
 
+.navbar {
+    background-color: var(--navbar-color);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+    text-align: center;
+    z-index: 100;
+}
+
+.nav-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.nav-list li {
+    display: inline;
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: var(--text-color-main);
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.nav-list a:hover {
+    color: var(--side-color);
+}
+
 #app {
     margin: 1rem;
     padding: 1.25rem;
     width: 100%;
     max-width: 1200px;
+    margin-top: 5rem;
 }
 
 .search-div {
