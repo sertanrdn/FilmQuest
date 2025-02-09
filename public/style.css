@@ -168,6 +168,13 @@ body {
     padding: 0.75rem;
 }
 
+.no-favorites {
+    color: var(--text-color-main);
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: -15%;
+}
+
 @media (max-width: 1024px) {
     .film-item {
         padding: 0.75rem;
