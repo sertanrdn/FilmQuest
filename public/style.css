@@ -87,11 +87,35 @@ body {
     margin-left: 10px;
 }
 
+.image-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
 .film-poster {
     width: 100%;
     height: auto;
     object-fit: cover;
     border-radius: 5px;
+}
+
+.fa-heart {
+    position: absolute;
+    top: 10px;
+    right: 10px; 
+    font-size: 1.5rem;
+    opacity: 0;
+    z-index: 10;
+}
+
+.image-wrapper:hover .fa-heart {
+    opacity: 1;
+}
+
+.fa-heart.favorite {
+    color: #d58d08;
+    opacity: 1;
 }
 
 .film-rating {
@@ -119,8 +143,8 @@ body {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .film-poster {
-        margin: 1rem;
+    .image-wrapper {
+        padding: 0 10px;
     }
 }
 
@@ -133,11 +157,14 @@ body {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .image-wrapper {
+        padding: 0 8px;
+    }
+
     .film-poster {
         width: 100%;
         height: auto;
         object-fit: cover;
-        margin: 0.75rem;
     }
 }
 
@@ -150,10 +177,13 @@ body {
         grid-template-columns: repeat(1, 1fr);
     }
 
+    .image-wrapper {
+        padding: 0 8px;
+    }
+
     .film-poster {
         width: 100%;
         height: auto;
         object-fit: cover;
-        margin: 0.5rem;
     }
 }
