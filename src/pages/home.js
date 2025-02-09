@@ -68,13 +68,18 @@ export function createSearchBar() {
 export async function initHomePage() {
     loadIndicator();
 
+    if (!document.querySelector('.navbar')) createNavbar();
+    if (!document.querySelector('.search-bar')) createSearchBar();
+
+    const appDiv = document.getElementById('app');
+    appDiv.innerHTML = '';
+
     try {
         const films = await fetchPopularFilms();
 
         if (films && films.results) {
             allFilms = films.results;
             popularFilms = [...films.results];
-            createNavbar();
             createSearchBar();
             renderFilms(films);
         } else {
