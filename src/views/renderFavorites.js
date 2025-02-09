@@ -1,5 +1,5 @@
 import { renderFilms } from "./renderFilm.js";
-import { getFavorites } from "../localStorage";
+import { getFavorites } from "../localStorage.js";
 
 export function renderFavorites() {
     const favorites = getFavorites();
