@@ -41,7 +41,9 @@ export function renderFilms(films) {
 
         const favorites = JSON.parse(localStorage.getItem('favorite')) || [];
         if (favorites.some(favoriteFilm => favoriteFilm.id === film.id)) {
-            heartIcon.classList.add('favorite');
+            heartIcon.classList.add('fa-solid', 'fa-heart', 'favorite');
+        } else {
+            heartIcon.classList.add('fa-regular', 'fa-heart');
         }
 
         heartIcon.addEventListener('click', () => {
