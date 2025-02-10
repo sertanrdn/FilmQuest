@@ -160,6 +160,35 @@ body {
     margin-bottom: 0.25rem;
 }
 
+.read-more {
+    background-color: var(--side-color);
+    color: var(--text-color-main);
+    border-radius: 5px;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    font-size: 0.75rem;
+}
+
+.read-more:hover {
+    background-color: #4fa97c;
+}
+
+.film-plot {
+    font-size: 0.75rem;
+    color: var(--text-color-main);
+    line-height: 1.4;
+    margin-top: 0.5rem;
+}
+
+.film-plot.hidden {
+    display: none;
+}
+
+.film-plot.visible {
+    max-height: 350px;
+    padding: 0.5rem;
+}
+
 .error-message {
     color: var(--text-color-main);
     font-size: 1.5rem;

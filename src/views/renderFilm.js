@@ -68,14 +68,21 @@ export function renderFilms(films) {
         const readMoreButton = document.createElement('button');
         readMoreButton.classList.add('read-more');
         readMoreButton.innerText = 'Read More';
-        
+
         const filmPlot = document.createElement('p');
         filmPlot.classList.add('film-plot', 'hidden');
         filmPlot.innerText = film.overview;
 
         readMoreButton.addEventListener('click', () => {
-            filmPlot.classList.toggle('hidden');
-            readMoreButton.innerText = filmPlot.classList.contains('hidden') ? 'Read More' : 'Show Less';
+            if (filmPlot.classList.contains('hidden')) {
+                filmPlot.classList.remove('hidden');
+                filmPlot.classList.add('visible');
+                readMoreButton.innerText = 'Show Less';
+            } else {
+                filmPlot.classList.remove('visible');
+                filmPlot.classList.add('hidden');
+                readMoreButton.innerText = 'Read More';
+            }
         });
 
         filmTitle.appendChild(releaseYear);
