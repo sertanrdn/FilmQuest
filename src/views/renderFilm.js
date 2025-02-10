@@ -38,6 +38,7 @@ export function renderFilms(films) {
 
         const heartIcon = document.createElement('i');
         heartIcon.classList.add('fa-regular', 'fa-heart');
+        heartIcon.dataset.id = film.id;
 
         const favorites = JSON.parse(localStorage.getItem('favorite')) || [];
         if (favorites.some(favoriteFilm => favoriteFilm.id === film.id)) {
