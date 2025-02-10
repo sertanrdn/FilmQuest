@@ -65,12 +65,27 @@ export function renderFilms(films) {
         filmRating.classList.add('film-rating');
         filmRating.innerText = `⭐ ${film.vote_average.toFixed(1)}/10`;
 
+        const readMoreButton = document.createElement('button');
+        readMoreButton.classList.add('read-more');
+        readMoreButton.innerText = 'Read More';
+        
+        const filmPlot = document.createElement('p');
+        filmPlot.classList.add('film-plot', 'hidden');
+        filmPlot.innerText = film.overview;
+
+        readMoreButton.addEventListener('click', () => {
+            filmPlot.classList.toggle('hidden');
+            readMoreButton.innerText = filmPlot.classList.contains('hidden') ? 'Read More' : 'Show Less';
+        });
+
         filmTitle.appendChild(releaseYear);
         filmItem.appendChild(filmTitle);
         filmItem.appendChild(imageWrapper);
         filmItem.appendChild(filmRating);
         imageWrapper.appendChild(heartIcon);
-        imageWrapper.appendChild(filmPoster)
+        imageWrapper.appendChild(filmPoster);
+        filmItem.appendChild(readMoreButton);
+        filmItem.appendChild(filmPlot);
         filmList.appendChild(filmItem);
     });
     appDiv.appendChild(filmList);
