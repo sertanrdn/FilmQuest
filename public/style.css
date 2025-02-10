@@ -88,6 +88,7 @@ body {
     gap: 20px;
     width: 100%;
     padding: 1.5rem;
+    align-items: start;
 }
 
 .film-item {
@@ -98,6 +99,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    align-self: start;
+    justify-content: space-between;
+    min-height: 450px;
+    position: relative;
 }
 
 .film-item:hover {
@@ -185,7 +190,7 @@ body {
 }
 
 .film-plot.visible {
-    max-height: 350px;
+    max-height: 400px;
     padding: 0.5rem;
 }
 
