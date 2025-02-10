@@ -1,6 +1,6 @@
 import { renderFavorites } from "../views/renderFavorites.js";
 
-function showFavoritesPage() {
+export function showFavoritesPage() {
     renderFavorites();
 }
 
