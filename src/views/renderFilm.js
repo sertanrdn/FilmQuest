@@ -65,12 +65,34 @@ export function renderFilms(films) {
         filmRating.classList.add('film-rating');
         filmRating.innerText = `⭐ ${film.vote_average.toFixed(1)}/10`;
 
+        const readMoreButton = document.createElement('button');
+        readMoreButton.classList.add('read-more');
+        readMoreButton.innerText = 'Read More';
+
+        const filmPlot = document.createElement('p');
+        filmPlot.classList.add('film-plot', 'hidden');
+        filmPlot.innerText = film.overview;
+
+        readMoreButton.addEventListener('click', () => {
+            if (filmPlot.classList.contains('hidden')) {
+                filmPlot.classList.remove('hidden');
+                filmPlot.classList.add('visible');
+                readMoreButton.innerText = 'Show Less';
+            } else {
+                filmPlot.classList.remove('visible');
+                filmPlot.classList.add('hidden');
+                readMoreButton.innerText = 'Read More';
+            }
+        });
+
         filmTitle.appendChild(releaseYear);
         filmItem.appendChild(filmTitle);
         filmItem.appendChild(imageWrapper);
         filmItem.appendChild(filmRating);
         imageWrapper.appendChild(heartIcon);
-        imageWrapper.appendChild(filmPoster)
+        imageWrapper.appendChild(filmPoster);
+        filmItem.appendChild(readMoreButton);
+        filmItem.appendChild(filmPlot);
         filmList.appendChild(filmItem);
     });
     appDiv.appendChild(filmList);
