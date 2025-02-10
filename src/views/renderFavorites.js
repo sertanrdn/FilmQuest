@@ -1,5 +1,5 @@
 import { renderFilms } from "./renderFilm.js";
-import { getFavorites, removeFavorites } from "../localStorage";
+import { getFavorites, removeFavorites } from "../localStorage.js";
 
 
 export function renderFavorites() {
