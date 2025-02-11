@@ -10,6 +10,13 @@
     --text-color-main: #E6E6E6;
     --navbar-color: #41658A;
     --side-color: #418060;
+    --space-small: 0.25rem;
+    --space-medium: 0.5rem;
+    --space-large: 1rem;
+    --font-size-big: 1.5rem;
+    --font-size-normal: 1rem;
+    --font-size-small: 0.75rem;
+    --border-radius: 5px;
 }
 
 body {
@@ -27,8 +34,8 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 1rem 0;
-    margin-bottom: 1rem;
+    padding: var(--space-large) 0;
+    margin-bottom: var(--space-large);
     text-align: center;
     z-index: 100;
 }
@@ -38,10 +45,6 @@ body {
     padding: 0;
     display: flex;
     justify-content: space-evenly;
-}
-
-.nav-list li {
-    display: inline;
 }
 
 .nav-list a {
@@ -56,7 +59,6 @@ body {
 }
 
 #app {
-    margin: 1rem;
     padding: 1.25rem;
     width: 100%;
     max-width: 1200px;
@@ -74,10 +76,10 @@ body {
     height: 30px;
     width: 200px;
     max-width: 400px;
-    padding: 0.5rem;
+    padding: var(--space-medium);
     border: 2px solid var(--side-color);
-    border-radius: 5px;
-    font-size: 1rem;
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-normal);
     background-color: var(--text-color-main);
     outline: none;
 }
@@ -93,7 +95,7 @@ body {
 
 .film-item {
     background-color: var(--film-card-background);
-    padding: 1rem;
+    padding: var(--space-large);
     text-align: center;
     border-radius: 10px;
     display: flex;
@@ -111,15 +113,15 @@ body {
 }
 
 .film-title {
-    font-size: 1rem;
+    font-size: var(--font-size-normal);
     font-weight: bold;
     color: var(--text-color-main);
     margin-bottom: 0.75rem;
-    margin-top: 0.25rem;
+    margin-top: var(--space-small);
 }
 
 .release-year {
-    font-size: 0.75rem;
+    font-size: var(--font-size-small);
     font-style: italic;
     font-weight: normal;
     opacity: 0.8;
@@ -136,14 +138,14 @@ body {
     width: 100%;
     height: auto;
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
 }
 
 .fa-heart {
     position: absolute;
     top: 10px;
     right: 10px; 
-    font-size: 1.5rem;
+    font-size: var(--font-size-big);
     opacity: 0;
     z-index: 10;
 }
@@ -153,36 +155,36 @@ body {
 }
 
 .fa-heart.favorite {
-    color: #d58d08;
+    color: #ff8000;
     opacity: 1;
 }
 
 .film-rating {
-    font-size: 1rem;
+    font-size: var(--font-size-normal);
     color: var(--text-color-main);
     font-weight: bold;
-    margin-top: 0.25rem;
-    margin-bottom: 0.25rem;
+    margin-top: var(--space-small);
+    margin-bottom: var(--space-small);
 }
 
 .read-more {
     background-color: var(--side-color);
     color: var(--text-color-main);
-    border-radius: 5px;
-    padding: 0.25rem 0.5rem;
+    border-radius: var(--border-radius);
+    padding: var(--space-small) var(--space-medium);
     cursor: pointer;
-    font-size: 0.75rem;
+    font-size: var(--font-size-small);
 }
 
 .read-more:hover {
-    background-color: #4fa97c;
+    background-color: #3c956b;
 }
 
 .film-plot {
-    font-size: 0.75rem;
+    font-size: var(--font-size-small);
     color: var(--text-color-main);
     line-height: 1.4;
-    margin-top: 0.5rem;
+    margin-top: var(--space-medium);
 }
 
 .film-plot.hidden {
@@ -191,20 +193,20 @@ body {
 
 .film-plot.visible {
     max-height: 400px;
-    padding: 0.5rem;
+    padding: var(--space-medium);
 }
 
 .error-message {
     color: var(--text-color-main);
-    font-size: 1.5rem;
+    font-size: var(--font-size-big);
     text-align: center;
-    margin-top: 1rem;
+    margin-top: var(--space-large);
     padding: 0.75rem;
 }
 
 .no-favorites {
     color: var(--text-color-main);
-    font-size: 1.5rem;
+    font-size: var(--font-size-big);
     text-align: center;
     margin-top: -15%;
 }
@@ -225,7 +227,7 @@ body {
 
 @media (max-width: 768px) {
     .film-item {
-        padding: 0.5rem;
+        padding: var(--space-medium);
     }
 
     .film-list {
@@ -235,17 +237,11 @@ body {
     .image-wrapper {
         padding: 0 8px;
     }
-
-    .film-poster {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-    }
 }
 
 @media (max-width: 480px) {
     .film-item {
-        padding: 0.25rem;
+        padding: var(--space-small);
     }
 
     .film-list {
@@ -254,11 +250,5 @@ body {
 
     .image-wrapper {
         padding: 0 8px;
-    }
-
-    .film-poster {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
     }
 }
