@@ -1,7 +1,7 @@
 import { addFavorites, removeFavorites } from "../localStorage.js";
+import { IMAGE_URL, LOCAL_STORAGE_KEY } from "../constants.js";
 
 export function renderFilms(films) {
-    console.log("Rendering films:", films.results);
     const appDiv = document.getElementById('app');    
     
     // Remove only the previous film list, NOT the entire appDiv
@@ -13,6 +13,7 @@ export function renderFilms(films) {
     const filmList = document.createElement('div');
     filmList.classList.add('film-list');
 
+    // Creating the DOM elements for film cards
     films.results.forEach(film => {
         const filmItem = document.createElement('div');
         filmItem.classList.add('film-item');
@@ -30,7 +31,7 @@ export function renderFilms(films) {
 
         const filmPoster = document.createElement('img');
         filmPoster.classList.add('film-poster');
-        filmPoster.src = film.poster_path ? `https://image.tmdb.org/t/p/w500${film.poster_path}` : '';
+        filmPoster.src = film.poster_path ? `${IMAGE_URL}${film.poster_path}` : '';
         if (!film.poster_path) {
             filmPoster.alt = 'No poster available';
         }
@@ -40,13 +41,15 @@ export function renderFilms(films) {
         heartIcon.classList.add('fa-regular', 'fa-heart');
         heartIcon.dataset.id = film.id;
 
-        const favorites = JSON.parse(localStorage.getItem('favorite')) || [];
+        // Switching the icons look based on the favorite
+        const favorites = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
         if (favorites.some(favoriteFilm => favoriteFilm.id === film.id)) {
             heartIcon.classList.add('fa-solid', 'fa-heart', 'favorite');
         } else {
             heartIcon.classList.add('fa-regular', 'fa-heart');
         }
 
+        // Adding event listener to the icons 
         heartIcon.addEventListener('click', () => {
             if (heartIcon.classList.contains('favorite')) {
                 heartIcon.classList.remove('favorite', 'fa-solid');
@@ -57,8 +60,6 @@ export function renderFilms(films) {
                 heartIcon.classList.remove('fa-regular');
                 addFavorites(film);
             }
-
-            console.log("Current Favorites:", JSON.parse(localStorage.getItem('favorite')));
         });
 
         const filmRating = document.createElement('p');
@@ -73,6 +74,7 @@ export function renderFilms(films) {
         filmPlot.classList.add('film-plot', 'hidden');
         filmPlot.innerText = film.overview;
 
+        // Adding event listener to button
         readMoreButton.addEventListener('click', () => {
             if (filmPlot.classList.contains('hidden')) {
                 filmPlot.classList.remove('hidden');
@@ -85,6 +87,7 @@ export function renderFilms(films) {
             }
         });
 
+        // Appending the elements to the correct HTML 
         filmTitle.appendChild(releaseYear);
         filmItem.appendChild(filmTitle);
         filmItem.appendChild(imageWrapper);

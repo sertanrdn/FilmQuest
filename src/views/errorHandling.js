@@ -6,7 +6,8 @@ export function showError(message) {
     if(existingError){
         existingError.remove();
     }
-
+    
+    // Otherwise displaying the error
     const errorMessage = document.createElement('div');
     errorMessage.classList.add('error-message');
     errorMessage.innerText = message;
