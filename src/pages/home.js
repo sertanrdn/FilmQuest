@@ -4,6 +4,7 @@ import { searchFilms, fetchPopularFilms } from "../api.js";
 import { renderFilms } from "../views/renderFilm.js";
 import { loadIndicator, removeIndicator } from "../views/indicator.js";
 import { showFavoritesPage } from "./favorites.js";
+import { DELAY } from "../constants.js";
 
 export let allFilms = [];
 export let popularFilms = [];
@@ -61,7 +62,7 @@ export function createSearchBar() {
         clearTimeout(delayInterval); // Clears the prev timer
         delayInterval = setTimeout(() => {
             filterFilms(event); // Calling filter after a delay to reduce API calls
-        }, 500);
+        }, DELAY);
     });
 }
 

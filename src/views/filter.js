@@ -2,11 +2,12 @@ import { renderFilms } from "./renderFilm.js";
 import { searchFilms } from "../api.js";
 import { showError } from "./errorHandling.js";
 import { allFilms, popularFilms } from "../pages/home.js";
+import { ERROR_CLASS } from "../constants.js";
 
 export async function filterFilms(event) {
     const query = event.target.value.trim().toLowerCase(); // Get the input field value
 
-    const existingError = document.querySelector('.error-message');
+    const existingError = document.querySelector(`.${ERROR_CLASS}`);
     if (existingError) {
         existingError.remove();
     }
