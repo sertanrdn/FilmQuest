@@ -15,7 +15,7 @@ export async function fetchPopularFilms() {
 }
 
 export async function searchFilms(query) {
-    // Fetching the films if the user want to search
+    // Fetching the films based on the search input
     try {
         const response = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`);
         if(!response.ok) {

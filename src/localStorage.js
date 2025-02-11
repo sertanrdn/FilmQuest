@@ -24,7 +24,5 @@ export function removeFavorites(film) {
 
 export function getFavorites() {
     // Getting the current favorites
-    const favorites = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
-
-    return favorites;
+    return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
 }

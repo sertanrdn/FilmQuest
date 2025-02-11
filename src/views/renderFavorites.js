@@ -1,6 +1,6 @@
 import { renderFilms } from "./renderFilm.js";
 import { getFavorites, removeFavorites } from "../localStorage.js";
-
+import { LOCAL_STORAGE_KEY } from "../constants.js";
 
 export function renderFavorites() {
     const appDiv = document.getElementById('app');
@@ -21,7 +21,7 @@ export function renderFavorites() {
     // Selecting the films with heart icon and adding event listener
     document.querySelectorAll('.film-item .fa-heart').forEach((heartIcon) => {
         heartIcon.addEventListener('click', () => {
-            const favorites = JSON.parse(localStorage.getItem('favorite')) || [];
+            const favorites = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
            
             // Finding the favorite film to remove by its ID
             const filmId = heartIcon.dataset.id;
@@ -32,7 +32,7 @@ export function renderFavorites() {
             heartIcon.closest('.film-item').remove();
 
             // Checking the remaining favorites
-            const remainingFavorites = JSON.parse(localStorage.getItem('favorite')) || [];
+            const remainingFavorites = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
             if (remainingFavorites.length === 0) {
                 appDiv.innerHTML = `<div class="no-favorites">You have no favorite films yet!</div>`;
             }
